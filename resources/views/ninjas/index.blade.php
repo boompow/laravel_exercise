@@ -3,10 +3,15 @@
     <ul class="ml-4">
         @foreach ($ninjas as $ninja)
             <li class="m-4">
-                <x-card href="/ninjas/{{$ninja['id']}}" :highlight="true">
-                    <p class="capitalize text-lg font-bold">{{$ninja["name"]}}</p>
+                <x-card href="{{route('ninjas.show', $ninja->id)}}" :highlight="$ninja->skill > 70">
+                    <div>
+                        <p>{{$ninja->id}}</p>
+                        <p class="capitalize text-lg font-bold">{{$ninja->name}}</p>
+                        <p>{{$ninja->dojo->name}}</p>
+                    </div>
                 </x-card>
             </li>
         @endforeach
     </ul>
+    {{$ninjas -> links()}}
 </x-layout>

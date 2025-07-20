@@ -6,14 +6,19 @@
     @vite("resources/css/app.css")
 </head>
 <body>
+    @if (session('success'))
+    <div id="flash" class="p-4 text-center bg-green-50 text-green-500 text-bold">
+        {{session('success')}}
+    </div>
+    @endif
     <header>
         <nav >
             <a href="/">Ninja Network</a>
-            <a href="/ninjas">All Ninjas</a>
-            <a href="/ninjas/create">Create New Ninja</a>
+            <a href="{{route("ninjas.index")}}">All Ninjas</a>
+            <a href="{{route("ninjas.create")}}">Create New Ninja</a>
         </nav>
     </header>
-    <main >
+    <main class="md:px-[4rem] md:py-4">
         {{$slot}}
     </main>
 </body>
